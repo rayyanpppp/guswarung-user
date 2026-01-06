@@ -11,7 +11,7 @@
     <div class="container col-md-4">
         <h3 class="text-center mb-4">Register</h3>
 
-        <form method="POST" action="RegisterServlet">
+        <form method="POST" action="${pageContext.request.contextPath}/RegisterServlet">
 
             <%-- Pesan Error (Mirip @if ($errors->any())) --%>
             <% 

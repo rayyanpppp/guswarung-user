@@ -3,14 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/OrderServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/ReportServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/LoginServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/User.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Customer.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Admin.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Driver.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/LogoutServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Userdao.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/OrderDAO.java</file>
             <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/config/Koneksi.java</file>
-            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Menu.java</file>
-            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/MenuDAO.java</file>
-            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/OrderDetail.java</file>
-            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/RegisterServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/HomeServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/home.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/keranjang.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/profile.jsp</file>
             <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/register.jsp</file>
-            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/InventarisController.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/sell.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/about.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/dashboard.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/Inventaris.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/kelola_admin.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/laporan.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/login.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/config/Password.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/ProfileUpdateServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/AuthFilter.java</file>
         </group>
     </open-files>
 </project-private>

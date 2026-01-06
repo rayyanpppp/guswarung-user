@@ -1,6 +1,7 @@
 package controllers;
 
 import config.Koneksi;
+import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,6 +28,11 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email"); // Gunakan email, bukan phone/kota
         String password = request.getParameter("password");
         String role = request.getParameter("role");
+        
+        // =========================
+        // HASH PASSWORD (WAJIB)
+        // =========================
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         try {
             Connection conn = Koneksi.configDB();
@@ -38,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, name);
             pstmt.setString(2, email);
-            pstmt.setString(3, password);
+            pstmt.setString(3, hashedPassword);
             pstmt.setString(4, role);
 
             int rowAffected = pstmt.executeUpdate();

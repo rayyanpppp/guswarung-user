@@ -9,7 +9,7 @@
         return;
     }
 
-    String userName = user.getname();
+    String userName = user.getName();
 %>
 <!DOCTYPE html>
 <html lang="id">
@@ -132,7 +132,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/admin/laporan" class="card-menu p-4 h-100 shadow-sm">
+                    <a href="${pageContext.request.contextPath}/admin/laporan.jsp" class="card-menu p-4 h-100 shadow-sm">
                         <div class="icon-box bg-info text-white shadow-sm">
                             <i class="fas fa-chart-line fa-xl"></i>
                         </div>
