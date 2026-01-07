@@ -1,5 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="models.User" %>
+<%
+    User user = (User) session.getAttribute("user");
+
+    if (user == null || !"admin".equalsIgnoreCase(user.getRole())) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
+
+    String userName = user.getName();
+%>
 <!DOCTYPE html>
 <html lang="id">
 <head>

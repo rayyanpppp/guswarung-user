@@ -8,10 +8,11 @@ package models;
  *
  * @author Rayyannabil
  */
-public interface Payment {
-    // prosesPembayaran(idPesanan, total) : bool
-    boolean prosesPembayaran(int idPesanan, float total);
 
-    // konfirmasi(idPesanan) : bool
-    boolean konfirmasi(int idPesanan);
+public interface Payment {
+    String getMethodName();
+    String getInstruction();
+    boolean isUploadRequired();
+    String getInitialStatus();
 }
+

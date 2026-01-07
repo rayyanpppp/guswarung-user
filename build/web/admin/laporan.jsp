@@ -6,147 +6,193 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laporan - GusWarung</title>
+    <title>Laporan Penjualan - GusWarung</title>
 
+    <!-- BOOTSTRAP & FONT -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
-        body { font-family: "Poppins", sans-serif; background-color: #fdf9f4; color: #3c2f2f; }
-        .laporan-container { padding: 50px 80px; }
-        .laporan-container h2 { font-weight: 700; color: #3b2b20; }
-        .stat-card { background-color: #fff; border: 1px solid #e5e5e5; border-radius: 15px; padding: 25px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); }
-        .stat-value { font-size: 1.7rem; font-weight: 700; color: #3b2b20; }
-        .badge-selesai { background-color: #d4edda; color: #155724; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; }
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #fdf9f4;
+            color: #3c2f2f;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 48px auto;
+            padding: 32px 40px;
+        }
+
+        .stat-card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            height: 100%;
+        }
     </style>
 </head>
 <body>
 
-    <div class="laporan-container">
-        <a href="${pageContext.request.contextPath}/admin/dashboard.jsp" class="btn btn-warning mb-4" data-aos="fade-right">
-            <i class="fas fa-arrow-left"></i> Kembali ke Dashboard
+<div class="page-wrapper">
+
+    <!-- ================= HEADER ================= -->
+    <div class="mb-5">
+        <a href="${pageContext.request.contextPath}/admin/dashboard.jsp"
+            class="btn btn-warning mb-3">
+            Kembali ke Dashboard
         </a>
-        
-        <h2 data-aos="fade-right">Laporan Penjualan</h2>
-        <p data-aos="fade-left">Ringkasan penjualan dan performa warung</p>
+        <h2 class="fw-bold mb-1">Laporan Penjualan</h2>
+    </div>
+    
+    <a href="${pageContext.request.contextPath}/ExportReportPdf"
+         class="btn btn-danger mb-3">
+         <i class="fas fa-file-pdf"></i> Export PDF
+    </a>
 
-        <div class="container my-5">
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="stat-card">
-                        <p class="mb-1 text-muted">Total Pendapatan</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="stat-value">
-                                Rp <fmt:formatNumber value="${totalRevenue}" pattern="#,###" />
-                            </div>
-                            <div class="rounded-4 p-2" style="background: #ffca28;">
-                                <span class="material-symbols-outlined text-dark">payments</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="stat-card">
-                        <p class="mb-1 text-muted">Jumlah Transaksi</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="stat-value">${orders.size()}</div>
-                            <div class="rounded-4 p-2" style="background: #03a9f4;">
-                                <span class="material-symbols-outlined text-white">receipt_long</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ================= FILTER PERIODE ================= -->
+    <div class="mb-4">
+        <h5 class="fw-semibold mb-3">Total Penjualan per Periode</h5>
 
-            <div class="row mt-5">
-                <div class="col-md-12" data-aos="fade-up">
-                    <div class="card shadow-sm border-0 rounded-4 p-4">
-                        <h5 class="fw-bold mb-4">Grafik Penjualan Terbaru</h5>
-                        <div style="height:350px;">
-                            <canvas id="salesChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="d-flex gap-2">
+            <a href="${pageContext.request.contextPath}/ReportServlet?period=daily"
+               class="btn ${period == 'daily' ? 'btn-warning' : 'btn-outline-warning'}">
+                Hari Ini
+            </a>
 
-            <section class="my-5" data-aos="fade-up">
-                <div class="card shadow-sm border-0 rounded-4 p-4">
-                    <h5 class="fw-bold mb-4 text-center">10 Transaksi Terbaru</h5>
-                    
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Waktu</th>
-                                    <th>Pelanggan</th>
-                                    <th>Metode</th>
-                                    <th>Total Bayar</th>
-                                    <th class="text-center">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="o" items="${orders}">
-                                    <tr>
-                                        <td>${o.createdAt}</td>
-                                        <td><strong>${o.customerName}</strong><br><small>${o.customerPhone}</small></td>
-                                        <td>${o.paymentMethod}</td>
-                                        <td>Rp <fmt:formatNumber value="${o.totalAmount}" pattern="#,###" /></td>
-                                        <td class="text-center">
-                                            <span class="badge-selesai">${o.status}</span>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
+            <a href="${pageContext.request.contextPath}/ReportServlet?period=weekly"
+               class="btn ${period == 'weekly' ? 'btn-warning' : 'btn-outline-warning'}">
+                Minggu Ini
+            </a>
+
+            <a href="${pageContext.request.contextPath}/ReportServlet?period=monthly"
+               class="btn ${period == 'monthly' ? 'btn-warning' : 'btn-outline-warning'}">
+                Bulan Ini
+            </a>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
+    <!-- ================= CARD RINGKASAN ================= -->
+    <div class="row g-4 mt-3 mb-5">
 
-        // LOGIKA GRAFIK
-        const ctx = document.getElementById('salesChart').getContext('2d');
-        const labels = [];
-        const dataValues = [];
+        <div class="col-md-6">
+            <div class="stat-card">
+                <p class="text-muted mb-1">Total Penjualan</p>
+                <h3 class="fw-bold">
+                    Rp <fmt:formatNumber value="${revenue}" pattern="#,###"/>
+                </h3>
+                <small class="text-muted">${label}</small>
+            </div>
+        </div>
 
-        <c:forEach var="o" items="${orders}" varStatus="loop">
-            <c:if test="${loop.index < 10}"> // Ambil 10 data terakhir untuk grafik
-                labels.push('${o.createdAt}');
-                dataValues.push(${o.totalAmount});
-            </c:if>
-        </c:forEach>
+        <div class="col-md-6">
+            <div class="stat-card">
+                <p class="text-muted mb-1">Jumlah Transaksi</p>
+                <h3 class="fw-bold">${totalOrders}</h3>
+                <small class="text-muted">${label}</small>
+            </div>
+        </div>
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels.reverse(), // Reverse agar urutan waktu dari lama ke baru
-                datasets: [{
-                    label: 'Total Bayar (Rp)',
-                    data: dataValues.reverse(),
-                    backgroundColor: 'rgba(255, 193, 7, 0.6)',
-                    borderColor: 'rgba(255, 193, 7, 1)',
-                    borderWidth: 1,
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-    </script>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- ================= TABEL TRANSAKSI ================= -->
+    <h5 class="fw-semibold mb-3">10 Transaksi Terbaru</h5>
+
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle bg-white">
+            <thead class="table-light">
+                <tr>
+                    <th>Waktu</th>
+                    <th>Pelanggan</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="o" items="${latestOrders}">
+                    <tr>
+                        <td>${o.createdAt}</td>
+                        <td>${o.customerName}</td>
+                        <td>
+                            Rp <fmt:formatNumber value="${o.totalAmount}" pattern="#,###"/>
+                        </td>
+                        <td>${o.status}</td>
+                    </tr>
+                </c:forEach>
+
+                <c:if test="${empty latestOrders}">
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">
+                            Tidak ada data transaksi
+                        </td>
+                    </tr>
+                </c:if>
+            </tbody>
+        </table>
+    </div>
+    
+    <hr class="my-5">
+
+<h5 class="mt-5 mb-3">Laporan Stok Barang (Inventaris)</h5>
+
+<div class="table-responsive">
+    <table class="table table-bordered align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Nama Barang</th>
+                <th class="text-center">Stok</th>
+                <th class="text-center">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="i" items="${inventarisList}">
+    <tr>
+        <td>${i.name}</td>
+        <td>${i.quantity} ${i.unit}</td>
+        <td>
+            <span class="badge 
+                ${i.status == 'rendah' ? 'bg-danger' : 'bg-success'}">
+                ${i.status}
+            </span>
+        </td>
+    </tr>
+</c:forEach>
+
+        </tbody>
+    </table>
+</div>
+
+
+<hr class="my-5">
+
+<h5 class="mb-3">Penjualan Terbanyak</h5>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Produk</th>
+                <th class="text-center">Total Terjual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="p" items="${topProducts}">
+                <tr>
+                    <td>${p.productName}</td>
+                    <td class="text-center">${p.quantity}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+
+
+</div>
+
 </body>
 </html>

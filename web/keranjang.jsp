@@ -142,7 +142,7 @@
             renderCart();
         }
 
-        document.getElementById('paymentMethod').addEventListener('change', function() {
+        document.getElementById('paymentMethod').addEventListener('change', function () {
             const details = document.getElementById('paymentDetails');
             const instruct = document.getElementById('paymentInstruction');
             const proof = document.getElementById('proofInput');
@@ -150,12 +150,17 @@
             if (this.value === 'cash') {
                 details.style.display = 'none';
                 proof.required = false;
-            } else {
+                proof.value = '';
+            } 
+            else if (this.value === 'qris') {
                 details.style.display = 'block';
                 proof.required = true;
-                instruct.innerHTML = this.value === 'qris' 
-                    ? 'Silakan scan QRIS GusWarung.' 
-                    : 'Transfer ke Bank XYZ: 12345678 a/n GusWarung';
+                instruct.innerHTML = 'Silakan scan QRIS GusWarung lalu upload bukti pembayaran.';
+            } 
+            else if (this.value === 'transfer') {
+                details.style.display = 'block';
+                proof.required = true;
+                instruct.innerHTML = 'Transfer ke Bank XYZ<br>No. Rek: 12345678 a/n GusWarung.';
             }
         });
 

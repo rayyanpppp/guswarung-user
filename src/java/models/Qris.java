@@ -2,49 +2,24 @@ package models;
 
 public class Qris implements Payment {
 
-    private String kodeQR;
-    private String buktiPembayaran;
-
-    public Qris(String kodeQR, String buktiPembayaran) {
-        this.kodeQR = kodeQR;
-        this.buktiPembayaran = buktiPembayaran;
-    }
-
-
     @Override
-    public boolean prosesPembayaran(int idPesanan, float total) {
-        System.out.println(
-            "Pembayaran QRIS untuk pesanan ID " + idPesanan +
-            " sebesar Rp " + total
-        );
-        System.out.println("Kode QR: " + kodeQR);
-        return true;
+    public String getMethodName() {
+        return "QRIS";
     }
 
     @Override
-    public boolean konfirmasi(int idPesanan) {
-        System.out.println(
-            "Konfirmasi pembayaran QRIS untuk pesanan ID " + idPesanan
-        );
+    public String getInstruction() {
+        return "Silakan scan QRIS GusWarung untuk melakukan pembayaran.";
+    }
+
+    @Override
+    public boolean isUploadRequired() {
         return true;
     }
-
-    // =========================
-    // GETTER & SETTER
-    // =========================
-    public String getKodeQR() {
-        return kodeQR;
+    
+    @Override
+    public String getInitialStatus() {
+        return "Menunggu Verifikasi Pembayaran QRIS";
     }
 
-    public void setKodeQR(String kodeQR) {
-        this.kodeQR = kodeQR;
-    }
-
-    public String getBuktiPembayaran() {
-        return buktiPembayaran;
-    }
-
-    public void setBuktiPembayaran(String buktiPembayaran) {
-        this.buktiPembayaran = buktiPembayaran;
-    }
 }

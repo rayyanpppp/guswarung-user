@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ page import="models.User" %>
+
+<%
+    User user = (User) session.getAttribute("user");
+
+    if (user == null || !"admin".equalsIgnoreCase(user.getRole())) {
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        return;
+    }
+
+    String userName = user.getName();
+%>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -14,7 +27,7 @@
 <body class="bg-light">
     <div class="container my-5">
         <h1 class="mb-4 text-warning">Daftar Pesanan Baru</h1>
-        <a href="../dashboard.jsp" class="btn btn-outline-secondary mb-3">
+        <a href="/admin/dashboard.jsp" class="btn btn-outline-secondary mb-3">
             <i class="fas fa-arrow-left me-2"></i> Kembali ke Dashboard
         </a>
         <hr>
@@ -82,7 +95,7 @@
                             </td>
                             <td>
                                 <%-- Link mengarah ke Servlet action show --%>
-                                <a href="AdminOrderServlet?action=show&id=${order.id}" class="btn btn-sm btn-outline-warning">
+                                <a href="${pageContext.request.contextPath}/admin/orders?action=show&id=${order.id}" class="btn btn-sm btn-outline-warning">
                                     <i class="fas fa-eye"></i> Detail
                                 </a>
                             </td>

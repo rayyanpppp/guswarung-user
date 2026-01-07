@@ -1,6 +1,9 @@
 package controllers;
 
 import config.Koneksi;
+import models.Payment;
+import models.Qris;
+import models.Transfer;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -50,15 +53,24 @@ public class OrderServlet extends HttpServlet {
         String paymentMethod = request.getParameter("payment_method");
         String notes = request.getParameter("notes");
         
-        // Parsing total_amount ke integer/long
-        String totalAmountStr = request.getParameter("total_amount");
-        long totalAmount = (totalAmountStr != null) ? Long.parseLong(totalAmountStr) : 0;
+        long totalAmount = Long.parseLong(request.getParameter("total_amount"));
 
-        // Ambil user_id secara aman (Tipe BIGINT di DB = long di Java)
-        Object userIdObj = session.getAttribute("user_id");
-        long userId = 0;
-        if (userIdObj != null) {
-            userId = Long.parseLong(userIdObj.toString());
+        Object userIdObj = session.getAttribute("userId");
+        long userId = (userIdObj != null) ? Long.parseLong(userIdObj.toString()) : 0;
+        
+        Payment payment = null;
+        switch (paymentMethod) {
+            case "qris":
+                payment = new Qris();
+                break;
+            case "transfer":
+                payment = new Transfer();
+                break;
+            case "cash":
+                payment = null; // Cash tidak pakai interface Payment
+                break;
+            default:
+                throw new ServletException("Metode pembayaran tidak valid");
         }
 
         Connection conn = null;
