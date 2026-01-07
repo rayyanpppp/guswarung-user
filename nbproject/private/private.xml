@@ -30,6 +30,19 @@
             <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/driver/dashboard.jsp</file>
             <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/RegisterServlet.java</file>
             <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/AdminServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/orders/index.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/InventarisDAO.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/ExportReportPdfServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/orders/show.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Payment.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Qris.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Transfer.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/OrderServlet.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/products/form.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/web/admin/products/index.jsp</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/Order.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/models/OrderDetail.java</file>
+            <file>file:/C:/Users/Rayyannabil/OneDrive/Dokumen/NetBeansProjects/gus-bknprojek5/src/java/controllers/AdminOrderServlet.java</file>
         </group>
     </open-files>
 </project-private>

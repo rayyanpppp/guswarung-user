@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="models.User" %>
 <%
-    String userName = (String) session.getAttribute("userName");
-    if (userName == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
+    User user = (User) session.getAttribute("user");
+    if (user == null) {
+    response.sendRedirect("login.jsp");
+    return;
+}
+
 %>
 <!DOCTYPE html>
 <html lang="id">
@@ -28,7 +30,7 @@
                     
                     <div class="mb-3">
                         <label class="form-label fw-bold">Nama Pemesan</label>
-                        <input type="text" class="form-control" name="customer_name" value="<%= userName %>" required />
+                        <input type="text" class="form-control" name="customer_name" value="<%= user.getName()%>" required />
                     </div>
                     
                     <div class="mb-3">

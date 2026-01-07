@@ -44,7 +44,7 @@
 
                         <h5 class="mt-4 fw-bold">Update Status Pesanan</h5>
                         <%-- Form POST ke Servlet untuk update status --%>
-                        <form action="AdminOrderServlet" method="POST" class="d-flex gap-2">
+                        <form action="${pageContext.request.contextPath}/admin/orders" method="POST" class="d-flex gap-2">
                             <input type="hidden" name="id" value="${order.id}">
                             <select name="status" class="form-select w-75">
                                 <option value="Menunggu Pembayaran" ${order.status == 'Menunggu Pembayaran' ? 'selected' : ''}>Menunggu Pembayaran</option>
